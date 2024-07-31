@@ -1,4 +1,4 @@
-# Thuật toán Sum Array, Binary Search và Quick Sort
+# Thuật toán Greedy Knapsack
 
 
 ### ***Mục lục***
