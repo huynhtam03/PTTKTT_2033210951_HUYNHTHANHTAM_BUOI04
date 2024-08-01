@@ -64,6 +64,7 @@ public static class GreedyKnapsack01
     }
 }
 ```
+https://github.com/user-attachments/assets/c3eb6974-7257-4dd9-a846-a565bd7e3965
 
 
 <a name = '2.2'></a>
@@ -97,6 +98,9 @@ public static class GreedyKnapsackFractional
 }
 
 ```
+
+https://github.com/user-attachments/assets/3add3f1d-7ecb-4a24-8346-a63f6090c7bd
+
 <a name = '2.3'></a>
 ## 2.3.	Bounded Knapsack Problem
 ```
@@ -119,148 +123,62 @@ public static class GreedyKnapsackBounded
     }
 }
 ```
+https://github.com/user-attachments/assets/6640f687-825b-46ad-91e0-f6c354b6b1f3
+
 <a name = '3'></a>
-# 3.	Binary Search
+# 3.	Ưu điểm và nhược điểm
 <a name = '3.1'></a>
-## 3.1.	Binary Search không đệ quy
-```
-        // Hàm Binary Search không đệ quy
-        public static int BinarySearchIterative(int[] array, int target)
-        {
-            int left = 0;
-            int right = array.Length - 1;
+## 3.1.	Ưu điểm
 
-            while (left <= right)
-            {
-                int mid = left + (right - left) / 2; // Tính chỉ số giữa
-
-                if (array[mid] == target) // Tìm thấy phần tử
-                    return mid;
-                else if (array[mid] > target) // Phần tử ở nửa bên trái
-                    right = mid - 1;
-                else // Phần tử ở nửa bên phải
-                    left = mid + 1;
-            }
-
-            // Nếu không tìm thấy phần tử
-            return -1;
-        }
-```
-https://github.com/user-attachments/assets/02a73667-8355-4022-989a-01a997485869
-
+- Đơn giản và dễ triển khai: Thuật toán Greedy có logic đơn giản và dễ dàng triển khai.
+- Hiệu quả về thời gian: Thuật toán Greedy thường có độ phức tạp thời gian thấp, giúp giải quyết bài toán nhanh chóng.
+- Hiệu quả cho bài toán Fractional Knapsack: Thuật toán Greedy cho kết quả tối ưu với bài toán Fractional Knapsack.
 <a name = '3.2'></a>
-## 3.2.	Binary Search đệ quy
-```
-// Hàm Binary Search đệ quy
-        public static int BinarySearchRecursive(int[] array, int left, int right, int target)
-        {
-            if (left <= right)
-            {
-                int mid = left + (right - left) / 2; // Tính chỉ số giữa
+## 3.2.	Nhược điểm
 
-                if (array[mid] == target) // Tìm thấy phần tử
-                    return mid;
-                else if (array[mid] > target) // Phần tử ở nửa bên trái
-                    return BinarySearchRecursive(array, left, mid - 1, target);
-                else // Phần tử ở nửa bên phải
-                    return BinarySearchRecursive(array, mid + 1, right, target);
-            }
-
-            // Nếu không tìm thấy phần tử
-            return -1;
-        }
-```
-https://github.com/user-attachments/assets/51d7834e-9850-4f0b-a7a0-e23b4b156cac
-
+- Không đảm bảo tối ưu cho mọi trường hợp: Thuật toán Greedy không đảm bảo tìm ra lời giải tối ưu cho tất cả các bài toán, đặc biệt là 0/1 Knapsack.
+- Không phù hợp cho các bài toán phức tạp: Với các bài toán có nhiều ràng buộc và yếu tố phức tạp, thuật toán Greedy có thể không cho ra kết quả chính xác.
+- Cần sắp xếp dữ liệu đầu vào: Thuật toán yêu cầu sắp xếp các mục theo tỷ lệ giá trị/trọng lượng, điều này có thể tốn thời gian nếu dữ liệu đầu vào lớn.
 <a name = '4'></a>
-# 4.	Quick Sort
-```
- public class Quick_Sort
-    {
-        // Hàm QuickSort chính
-        public static void QuickSort(int[] array, int low, int high)
-        {
-            if (low < high)
-            {
-                // Chia mảng thành hai phần và sắp xếp chúng
-                int pivotIndex = Partition(array, low, high);
-                QuickSort(array, low, pivotIndex - 1); // Sắp xếp phần mảng bên trái Pivot
-                QuickSort(array, pivotIndex + 1, high); // Sắp xếp phần mảng bên phải Pivot
-            }
-        }
+# 4.	Cài đặt và sử dụng
 
-        // Hàm phân hoạch mảng
-        public static int Partition(int[] array, int low, int high)
-        {
-            // Chọn Pivot là phần tử cuối cùng trong mảng con
-            int pivot = array[high];
-            int i = low - 1;
-
-            for (int j = low; j < high; j++)
-            {
-                if (array[j] <= pivot) // Nếu phần tử nhỏ hơn hoặc bằng Pivot
-                {
-                    i++;
-                    Swap(array, i, j); // Đổi chỗ phần tử
-                }
-            }
-            // Đưa Pivot về đúng vị trí của nó
-            Swap(array, i + 1, high);
-            return i + 1;
-        }
-
-        // Hàm đổi chỗ hai phần tử trong mảng
-        public static void Swap(int[] array, int i, int j)
-        {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-    }
+<a name = '4.1'></a>
+## 4.1.	0/1 Knapsack Problem
 ```
-https://github.com/user-attachments/assets/7fe1b12e-d3f0-403c-897e-a1838b1342b3
-
-<a name = '5'></a>
-# 5.	Cài đặt và sử dụng
-
-<a name = '5.1'></a>
-## 5.1.	Sum Array
+var items = new List<Item>
+{
+    new Item { Value = 60, Weight = 10 },
+    new Item { Value = 100, Weight = 20 },
+    new Item { Value = 120, Weight = 30 }
+};
+int capacity = 50;
+double maxValue = GreedyKnapsack01.Calculate(capacity, items);
+Console.WriteLine("Gia tri lon nhat co the dat duoc: " + maxValue);
 ```
-            // Test hàm tính tổng mảng không đệ quy
-            Console.WriteLine("Test SumArrayIterative:");
-            int[] array = { 1, 2, 3, 4, 5 };
-            int sumIterative = Sum_Array.SumArrayIterative(array, array.Length - 1);
-            Console.WriteLine("Tong cua mang la: " +sumIterative);
-
-            // Test hàm tính tổng mảng bằng đệ quy
-            Console.WriteLine("\nTest SumArrayRecursive:");
-            int sumRecursive = Sum_Array.SumArrayRecursive(array, array.Length - 1);
-            Console.WriteLine("Tong cua mang la: " +sumRecursive);
+<a name = '4.2'></a>
+## 4.2.	Fractional Knapsack Problem
 ```
-<a name = '5.2'></a>
-## 5.2.	Binary Search
+var items = new List<Item>
+{
+    new Item { Value = 60, Weight = 10 },
+    new Item { Value = 100, Weight = 20 },
+    new Item { Value = 120, Weight = 30 }
+};
+int capacity = 50;
+double maxValue = GreedyKnapsackFractional.Calculate(capacity, items);
+Console.WriteLine("Gia tri lon nhat co the dat duoc: " + maxValue);
 ```
-            // Test hàm Binary Search không đệ quy
-            Console.WriteLine("\nTest Binary Search khong de quy:");
-            int[] sortedArray = { 1, 2, 3, 4, 5, 6 };
-            int target = 1;
-            int resultIterative = Binary_Search.BinarySearchIterative(sortedArray, target);
-            Console.WriteLine(resultIterative != -1 ? "Phan tu " + target + " duoc tim thay o chi so " + resultIterative + "." : "Phan tu " + target + " khong co trong mang.");
-
-            // Test hàm Binary Search đệ quy
-            Console.WriteLine("\nTest Binary Search de quy:");
-            int resultRecursive = Binary_Search.BinarySearchRecursive(sortedArray, 0, sortedArray.Length - 1, target);
-            Console.WriteLine(resultRecursive != -1 ? "Phan tu " + target + " duoc tim thay o chi so " + resultRecursive + "." : "Phan tu " + target + " khong co trong mang.");
+<a name = '4.3'></a>
+## 4.3.	Bounded Knapsack Problem
 ```
-<a name = '5.3'></a>
-## 5.3.	Quick Sort
-```
-             // Test hàm QuickSort
-            Console.WriteLine("\nTest QuickSort:");
-            int[] arrayToSort = { 3, 1, 4, 10, 5 };
-            Console.WriteLine("Mang truoc khi sap xep:");
-            PrintArray(arrayToSort);
-            Quick_Sort.QuickSort(arrayToSort, 0, arrayToSort.Length - 1);
-            Console.WriteLine("Mang sau khi sap xep:");
-            PrintArray(arrayToSort);
+// Sử dụng
+var items = new List<Item>
+{
+    new Item { Value = 60, Weight = 10, Quantity = 2 },
+    new Item { Value = 100, Weight = 20, Quantity = 2 },
+    new Item { Value = 120, Weight = 30, Quantity = 2 }
+};
+int capacity = 50;
+double maxValue = GreedyKnapsackBounded.Calculate(capacity, items);
+Console.WriteLine("Gia tri lon nhat co the dat duoc: " + maxValue);
 ```
